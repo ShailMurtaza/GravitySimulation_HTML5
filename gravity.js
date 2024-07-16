@@ -2,21 +2,21 @@ const canvas = new Canvas("canvas")
 
 var all_balls = []
 function create_ball(x, y, speed, color="black", mass=10) {
-    const ball = new Circle({x: x, y: y}, mass, speed, color, canvas.get_canvas(), canvas.get_ctx())
+    const ball = new Circle({x: x, y: y}, mass, speed, color, canvas)
     all_balls.push(ball)
 }
 
-create_ball(canvas.w()/2, canvas.h()/2-100, {x: 0, y: 3}, "red", 10)
-create_ball(canvas.w()/2+100, canvas.h()/2, {x: 0, y: -3}, "black", 10)
+// create_ball(canvas.w()/2, canvas.h()/2-100, {x: 4, y: 3}, "red", 10)
+// create_ball(canvas.w()/2+100, canvas.h()/2, {x: 0, y: -3}, "black", 10)
+create_ball(canvas.w()/2-100, canvas.h()/2, {x: -2, y: 3}, "red", 10)
+create_ball(canvas.w()/2+100, canvas.h()/2, {x: 2, y: -3}, "black", 10)
 // create_ball(40, 30, {x: 0, y: 0}, "blue", 50)
-// create_ball(canvas.w()/2, canvas.h()/2, {x: -6, y: 4}, "red", 10)
-// create_ball(canvas.w()/2+40, canvas.h()/2+30, {x: 2, y: -2}, "black", 10)
 
 function gravity(balls) {
     // Delta Time
     const dt = 0.07
     // Gravitational Constant
-    const G = 20
+    const G = 100
     for(let i=0;i<balls.length;i++) {
         for(let j=0;j<balls.length;j++) {
             // Skip calculations if index is same.
@@ -53,9 +53,10 @@ function gravity(balls) {
 }
 
 function draw() {
-    gravity(all_balls)
     canvas.clear()
+    gravity(all_balls)
     for(let i=0;i<all_balls.length;i++) {
+        all_balls[i].draw_path()
         all_balls[i].draw()
     }
     requestAnimationFrame(draw)
