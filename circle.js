@@ -3,7 +3,7 @@ class Circle {
         this.pos = pos
         this.mass = mass
         this.speed = speed
-        this.radius = mass / 2
+        this.radius = Math.sqrt(mass) * 1.2
         this.color = color
         this.pointer = false
         this.Canvas = Canvas
