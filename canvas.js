@@ -12,7 +12,7 @@ class Canvas {
         this.#ctx = /** @type {HTMLCanvasElement} */ this.#canvas.getContext('2d')
     }
 
-    line(x1, y1, x2, y2, color="black", line_width=2) {
+    line(x1, y1, x2, y2, color="black", line_width=1.5) {
         this.#ctx.beginPath()
         this.#ctx.moveTo(x1, y1)
         this.#ctx.lineTo(x2, y2)

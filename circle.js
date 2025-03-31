@@ -10,6 +10,8 @@ class Circle {
         this.canvas = Canvas.get_canvas()
         this.ctx = Canvas.get_ctx()
         this.path_points = [{x: pos.x, y: pos.y}]
+
+        if (this.radius < 0) this.radius = -this.radius
     }
     draw() {
         this.ctx.beginPath()
@@ -35,6 +37,7 @@ class Circle {
         this.pos.x = x
         this.pos.y = y
         this.path_points.push({x: x, y: y})
+        if (this.path_points.length > 240) this.path_points.shift()
     }
 }
 
