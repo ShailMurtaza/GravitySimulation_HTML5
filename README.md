@@ -4,6 +4,8 @@ A lightweight, browser-based n-body gravity simulator built with vanilla JavaScr
 
 Bodies attract each other via Newton's law of universal gravitation, leave orbital trails behind them, and you can spawn new ones anywhere on the canvas with custom mass and velocity.
 
+![Gravity simulation in action](simulation.gif)
+
 ## Features
 
 - **N-body gravitational simulation** — every body attracts every other body
