@@ -45,4 +45,9 @@ class Circle {
         this.path_points.push({ x: x, y: y });
         if (this.path_points.length > 240) this.path_points.shift();
     }
+
+    update_mass(mass) {
+        this.mass = mass;
+        this.radius = Math.sqrt(mass) * 1.2;
+    }
 }

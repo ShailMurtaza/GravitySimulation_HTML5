@@ -15,7 +15,7 @@ function create_ball(x, y, speed, color = "black", mass = 10) {
 }
 
 // create_ball(canvas.w()/2, canvas.h()/2-100, {x: 4, y: 3}, "red", 10)
-// create_ball(ca(canvas.w()/2+100, canvas.h()/2, {x: 5, y: -3}, "black", 10)
+// create_ball(canvas.w() / 2 + 100, canvas.h() / 2, { x: 5, y: -3 }, "black", 10);
 create_ball(canvas.w() / 2 - 100, canvas.h() / 2, { x: -4, y: 3 }, "red", 10);
 create_ball(canvas.w() / 2 + 100, canvas.h() / 2, { x: 4, y: -3 }, "black", 10);
 // create_ball(canvas.w()/2, canvas.h()/2+200, {x: 10, y: 0}, "blue", 30)
@@ -86,9 +86,9 @@ function mouseClick() {
     create_ball(
         pointer.pos.x,
         pointer.pos.y,
-        { x: 0, y: 0 },
+        { x: velocity_x.value, y: velocity_y.value },
         getColor(),
-        pointer.mass,
+        mass.value,
     );
 }
 
@@ -106,6 +106,9 @@ const pointer = new Circle(
     true,
     canvas,
 );
+mass.onchange = () => {
+    pointer.update_mass(mass.value);
+};
 canvas.onMouseMove(mouseMove);
 canvas.onClick(mouseClick);
 

@@ -1,26 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gravity Simulation</title>
-    <style>
-        html, body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-        }
-        canvas {
-            margin: 2px 2px 0 2px;
-            border: 5px solid black;
-        }
-    </style>
-</head>
-<body>
-    <canvas id="canvas"></canvas>
-    <script src="canvas.js"></script>
-    <script src="circle.js"></script>
-    <script src="gravity.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gravity Simulation</title>
+        <style>
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+            canvas {
+                margin: 2px 2px 0 2px;
+                border: 5px solid black;
+            }
+            #inputs {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                width: 93%;
+                align-items: center;
+                position: absolute;
+                padding: 10px 20px;
+            }
+            .input {
+                width: 100%;
+                display: grid;
+                grid-template-columns: auto 1fr auto;
+                gap: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="inputs">
+            <div class="input">
+                <label>Mass</label>
+                <input id="mass" type="range" min="10" max="100" value="20" />
+                <span id="mass_value">20</span>
+            </div>
+            <div class="input">
+                <label>Velocity X</label>
+                <input
+                    id="velocity_x"
+                    type="range"
+                    min="-10"
+                    max="10"
+                    value="0"
+                />
+                <span id="velocity_x_value">0</span>
+            </div>
+            <div class="input">
+                <label>Velocity Y</label>
+                <input
+                    id="velocity_y"
+                    type="range"
+                    min="-10"
+                    max="10"
+                    value="0"
+                />
+                <span id="velocity_y_value">0</span>
+            </div>
+        </div>
+        <canvas id="canvas"></canvas>
+        <script>
+            const mass = document.getElementById("mass");
+            const velocity_x = document.getElementById("velocity_x");
+            const velocity_y = document.getElementById("velocity_y");
+
+            const mass_value = document.getElementById("mass_value");
+            const velocity_x_value =
+                document.getElementById("velocity_x_value");
+            const velocity_y_value =
+                document.getElementById("velocity_y_value");
+
+            function bindValue(input, output) {
+                input.addEventListener("input", () => {
+                    output.innerText = input.value;
+                });
+            }
+
+            bindValue(mass, mass_value);
+            bindValue(velocity_x, velocity_x_value);
+            bindValue(velocity_y, velocity_y_value);
+        </script>
+        <script src="canvas.js"></script>
+        <script src="circle.js"></script>
+        <script src="gravity.js"></script>
+    </body>
 </html>
